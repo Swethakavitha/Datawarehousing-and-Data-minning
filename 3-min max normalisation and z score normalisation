@@ -1,0 +1,11 @@
+ (1- normalisation data)
+data <- c(200, 300, 400, 600, 1000)
+normalized_data <- scale(data, center = min(data), scale = max(data) - min(data))
+cat("Original data: ", data, "\n")
+cat("Normalized data: ", normalized_data, "\n")
+
+(2-z score normalisation)
+data <- c(200, 300, 400, 600, 1000)
+z_score_normalized_data <- scale(data)
+cat("Original data: ", data, "\n")
+cat("Z-score normalized data: ", z_score_normalized_data, "\n")
