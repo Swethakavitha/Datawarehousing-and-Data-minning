@@ -1,0 +1,208 @@
+#day1_1
+age=c(1-5,5-15,15-20,20-50,50-80,80-110)
+frequency=c(200,450,300,1500,700,44)
+
+#median
+median(age)
+median(frequency)
+
+
+#day1_2
+age<-c(13,15,16,16,19,20,20,21,22,22,25,25,25,25,30,33,33,35,35,35,35,36,40,45,46,52,70)
+
+#midrange
+min(age)
+max(age)
+midrange=(min(age)+max(age))/2
+midrange
+
+#q1q2quartile
+q1=quantile(age,.25)
+print(q1)
+q3=quantile(age,.75)
+print(q3)
+ 
+#mean 
+mean(age)
+ 
+#median
+median(age)
+
+#mode 
+mode=names(table(age))[table(age)==max(table(age))] 
+mode
+
+#day1_3
+#min_max normalization
+values=c(200, 300, 400, 600,1000)
+min=0
+max=1
+for(i in values)
+{
+   min_max=((i-200)/(1000-200))
+   print(min_max)
+}
+ 
+#z_score normalization
+m=mean(values)
+s=sd(values)
+for(i in values)
+{
+   z_score=(i-m)/s
+   print(z_score)
+}
+
+
+#day1_4
+value=c(11,13,13,15,15,16,19,20,20,20,21,21,22,23,24,30,40,45,45,45,71,72,73,75)
+bin1=c(11,13,13,15)
+bin2=c(15,16,19,20)
+bin3=c(20,20,21,21)
+bin4=c(22,23,24,30)
+bin5=c(40,45,45,45)
+bin6=c(71,72,73,75)
+
+
+#smoothening_by_bin_mean
+mean(bin1)
+mean(bin2)
+mean(bin3)
+mean(bin4)
+mean(bin5)
+mean(bin6)
+
+#smoothening_by_bin_median
+median(bin1)
+median(bin2)
+median(bin3)
+median(bin4)
+median(bin5)
+median(bin6)
+
+# Define the data
+data <- c(11, 13, 13, 15, 15, 16, 19, 20, 20, 20, 21, 21, 22, 23, 24, 30, 40, 45, 45, 45, 71,p 72, 73, 75)
+
+# Calculate bin edges
+bins <- cut(data, breaks = 3, labels = FALSE)
+
+# Calculate bin means
+bin_means <- tapply(data, bins, mean)
+print(bin_means)
+
+# Calculate bin medians
+bin_medians <- tapply(data, bins, median)
+print(bin_medians)
+
+# Calculate bin boundaries
+bin_boundaries <- tapply(data, bins, function(x) c(min(x), max(x)))
+print(bin_boundaries)
+
+
+
+
+
+
+#day1_5
+age=c(23,23,27,27,39,41,47,49,50,52,54,54,56,57,58,58,60,61)
+fat=c(9.5,26.5,7.8,17.8,31.4,25.9,27.4,27.2,31.2,34.6,42.5,28.8,33.4,30.2,34.1,32.9,41.2,35.7)
+
+#mean
+mean(age)
+mean(fat)
+
+#median
+median(age)
+median(fat)
+
+#sd
+sd(age)
+sd(fat)
+
+#boxplot
+boxplot(age,fat)
+
+age=c(23,23,27,27,39,41,47,49,50,52,54,54,56,57,58,58,60,61)
+fat=c(9.5,26.5,7.8,17.8,31.4,25.9,27.4,27.2,31.2,34.6,42.5,28.8,33.4,30.2,34.1,32.9,41.2,35.7)
+#scatterplot
+scatter.smooth(age,fat)
+
+#qqplot
+qqplot(age,fat)
+ 
+
+#day1_6
+age=c(23,23,27,27,39,41,47,49,50,52,54,54,56,57,58,58,60,61)
+
+#min_max
+min=0.0
+max=1.0
+min_max=(35-23)/(61-23)
+print(min_max)
+
+#z_Score
+m=mean(age)
+sd=12.94
+z_score=(35-m)/sd
+print(z_score)
+
+#decimal_scaling
+v=35
+j=max(age)<1
+decimal_scale=v/10^j
+print(decimal_scale)
+
+
+#day1_7
+pencil=c(9,25,23,12,11,6,7,8,9,10)
+
+#mean
+mean(pencil)
+
+#median
+median(pencil)
+
+#mode
+mode=names(table(pencil))[table(pencil)==max(table(pencil))]
+mode
+
+
+#day1_8
+mobile_phone_sold=c(4,1,5,7,10,2,50,25,90,36) 
+money=c(12,5,13,19,31,7,153,72,275,110) 
+
+#scatterplot 
+scatter.smooth(mobile_phone_sold)
+
+
+#day1_10
+speed=c(78.3,81.8,82,74.2,83.4,84.5,82.9,77.5,80.9,70.6)
+
+#IQR
+IQR(speed) 
+
+#sd
+sd(speed)
+
+
+
+#day1_9
+# Data
+data <- c(55, 60, 71, 63, 55, 65, 50, 55, 58, 59, 61, 63, 65, 67, 71, 72, 75)
+
+
+hist(data, breaks = "FD", main = "Equal-frequency", col = "blue", xlab = "Marks")
+hist(data, breaks = 3, main = "Equal-width", col = "green", xlab = "Marks")
+
+#day1_11
+age=c(13,15,16,16,19,20,20,21,22,22,25,25,25,25,30,33,33,35,35,35,35,36,40,45,46,52,70) 
+
+#q1
+q1=quantile(age,.25) 
+print(q1) 
+
+#q3
+q2=quantile(age,.75) 
+print(q2)
+
+
+
