@@ -1,0 +1,192 @@
+#day2_1
+age=c("5-6","7-8","9-10")
+a=c(18,2,20)
+b=c(22,28,10)
+c=c(20,40,40)
+table=data.frame(age,a,b,c)
+table
+
+#sample_covariance_between_B_and_C
+cov(table$b,table$c)
+
+#use_another_call_cov()_covariance_matrix
+table1=data.frame(a,b,c)
+cov(table1)
+
+#use_cor()_between_B_and_C
+cor(table$b,table$c)
+
+#use_another_call_cor()_correlation_matrix
+table2=data.frame(a,b,c)
+cor(table2)
+
+
+
+#day2_2
+data_points <- c(1, 1, 5, 5, 5, 5, 5, 5, 8, 8, 10, 10, 10, 10, 12, 14, 14, 14, 15, 15, 15, 15, 15, 15, 18, 18, 18, 18, 18, 18, 18, 18, 20, 20, 20, 20, 20, 20, 20, 21, 21, 21, 21, 25, 25, 25, 25, 25, 28, 28, 30, 30, 30)
+
+
+hist(data_points, breaks = 3, main = "Equal-frequency", col = "blue", xlab = "Marks")
+
+bins <- cut(data, breaks = 3, labels = FALSE)
+
+bin_means <- tapply(data, bins, mean)
+print(bin_means)
+
+bin_boundaries <- tapply(data, bins, function(x) c(min(x), max(x)))
+print(bin_boundaries)
+
+
+
+
+
+
+
+
+# Calculate bin means
+bin_means <- tapply(data_points, equal_freq_bins, mean)
+print(bin_means)
+
+
+# Number of bins and smoothing
+num_bins <- 3
+smoothed_data <- tapply(data, cut(seq_along(data), breaks = num_bins), mean)[cut(seq_along(data), breaks = num_bins)]
+
+# Print the smoothed data
+print(smoothed_data)
+
+# Calculate bin boundaries
+bin_boundaries <- unique(bin_means)
+print(bin_boundaries)
+
+
+
+
+
+
+#day2_3
+A=c(76,35,47,64,95,66,89,36,84,76,35,47,64,95,66,89,36,84)
+B=c(51,56,84,60,59,70,63,66,50,51,56,84,60,59,70,63,66,50)
+
+#higher_mean
+mean(A)
+mean(B)
+max((mean(A)),(mean(B)))
+
+#higher_median
+median(A)
+median(B)
+max((median(A)),(median(B)))
+
+#range
+a=max(A)-min(A)
+b=max(B)-min(B)
+max(a,b)
+
+#boxplot
+boxplot(A,B)
+
+
+#day2_4
+#a
+min=0
+max=1
+min_max=(80-50000)/(100000-50000)
+print(min_max)
+
+#b
+#min_max normalization
+values=c(200, 300, 400, 600,1000)
+min=0
+max=1
+for(i in values)
+{
+  min_max=((i-200)/(1000-200))
+  print(min_max)
+}
+
+#z_score normalization
+m=mean(values)
+s=sd(values)
+for(i in values)
+{
+  z_score=(i-m)/s
+  print(z_score)
+}
+
+
+
+#day2_5
+#histogram_of_air_passengers
+hist(AirPassengers,
+     main="Histogram for air passengers",
+     xlab="passengers",border="red",col="green",
+     breaks=c(100,seq(200,700,150))
+)
+
+
+#day2_6
+p=mtcars$mpg 
+u=mtcars$qsec 
+plot(p,type = "o", 
+     col = "red", 
+     xlab = "mpg", 
+     ylab = "cyl", 
+     main = "line chart for mtcars") 
+lines(u, type = "o", 
+      col = "green")
+
+
+#day2_7
+data<-read.csv("water_potability.csv")
+data
+u=data$ph
+x=data$Hardness
+relation<-lm(u~x)	
+print(relation)
+w=data.frame(v=88)
+res=predict(relation,w)
+print(res)
+plot(u,x,
+     col = "blue",
+     main = "ph and hardness Regression",
+     abline(lm(x~u)),
+     cex = 0.1,
+     pch = 16,
+     xlab = "ph rate",
+     ylab = "HardnessÂ level")
+
+
+
+#day2_8
+head(mtcars) 
+boxplot(mpg ~ cyl, 
+        data = mtcars, 
+        xlab = "Number of Cylinders", 
+        ylab = "Miles Per Gallon", 
+        main = "Mileage Data")
+
+
+#day2_9
+# Sample data (replace with your data)
+points_scored <- c(80, 85, 90, 92, 94, 100, 102, 105, 120, 150)
+
+# Create a boxplot
+boxplot(points_scored, main = "Boxplot of Points Scored by Tennis Players", ylab = "Points Scored")
+
+# Add gridlines
+grid()
+
+
+
+
+#day2_10
+# Load the diabetes dataset
+data <- read.csv("C:/Users/Yuktha Varshika/Downloads/diabetes.csv")
+
+scatter.smooth(data$Age,data$BloodPressure,
+               col=as.numeric(data$Age))
+        
+barplot(data$Age,data$BloodPressure)
+
+
